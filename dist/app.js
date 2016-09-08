@@ -60,8 +60,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
-
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
@@ -21449,6 +21447,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactDom = __webpack_require__(34);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21463,22 +21465,51 @@
 	  function App() {
 	    _classCallCheck(this, App);
 
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+	    _this.state = { txt: ' ' };
+	    _this.update = _this.update.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(App, [{
+	    key: 'update',
+	    value: function update(e) {
+	      this.setState({ txt: e.target.value });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'Hi there'
+	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
+	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
+	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
+	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update })
 	      );
 	    }
 	  }]);
 
 	  return App;
 	}(_react2.default.Component);
+
+	var JoeWidget = function JoeWidget(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'h1',
+	      null,
+	      'Hi there ',
+	      props.txt
+	    ),
+	    _react2.default.createElement('input', { type: 'text',
+	      onChange: props.update })
+	  );
+	};
+
+	_reactDom2.default.render(_react2.default.createElement(App, { txt: '' }), document.getElementById('app'));
 
 	exports.default = App;
 

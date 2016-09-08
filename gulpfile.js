@@ -45,7 +45,7 @@ gulp.task('sass', function() {
 
 // // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('src/*.js', ['lint', 'scripts']);
+    gulp.watch('src/*.js', ['lint', 'build', 'webpack-dev-server']);
     gulp.watch('scss/*.scss', ['sass']);
 });
 
