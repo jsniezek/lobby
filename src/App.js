@@ -3,32 +3,49 @@ import ReactDOM from 'react-dom';
 class App extends React.Component {
   constructor(){
     super();
-    this.state = {txt: ' '};
+    this.state = {
+      red: 128,
+      green: 128,
+      blue: 128,
+      color: "rgb(128,128,128)"
+    };
     this.update = this.update.bind(this);
   }
   update(e){
-    this.setState({txt: e.target.value})
+    let redVal = ReactDOM.findDOMNode(this.refs.red.refs.slide).value;
+    let greenVal = ReactDOM.findDOMNode(this.refs.green.refs.slide).value;
+    let blueVal = ReactDOM.findDOMNode(this.refs.blue.refs.slide).value;
+
+    this.setState({
+      red: redVal,
+      green: greenVal,
+      blue: blueVal,
+      color: this.updateColor()
+    })
   }
   render(){
     return (
-      <div>
-        <JoeWidget txt={this.state.txt} update={this.update} />
-        <JoeWidget txt={this.state.txt} update={this.update} />
-        <JoeWidget txt={this.state.txt} update={this.update} />
-        <JoeWidget txt={this.state.txt} update={this.update} />
-      </div>
+      <div style={{backgroundColor: this.state.color}} >
+        <Slider ref="red" color="red" txt={this.state.red} update={this.update} />
+        <Slider ref="green" color="green" txt={this.state.green} update={this.update} />
+        <Slider ref="blue" color="blue" txt={this.state.blue} update={this.update} />
+    </div>
     )
+  }
+  updateColor() {
+    return "rgb("+this.state.red+","+this.state.green+","+this.state.blue+")";
   }
 }
 
-const JoeWidget = (props) => {
-  return (
-    <div>
-      <h1>Hi there {props.txt}</h1>
-        <input type="text"
-          onChange={props.update} />
-    </div>
-  );
+class Slider extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.color} {this.props.txt}</h1>
+        <input ref="slide" type="range" min="0" max="255" onChange={this.props.update} />
+       </div>
+    );
+  }
 }
 
 ReactDOM.render(
