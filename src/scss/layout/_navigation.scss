@@ -7,7 +7,7 @@ nav {
   align-items: center;
   height: 4em;
   padding: .5em 0;
-  background-color: #fff;
+  background-color: $nav-bg;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -34,7 +34,6 @@ nav {
   flex-grow: 1;
   justify-content: center;
   //background-color: #bff;
-  font-size: 1em;
   padding: 0em 1em;
 }
 
@@ -43,9 +42,11 @@ nav {
   color: #000;
   /*color: #551A8B;*/
   /*color: #607770;*/
+  font-size: 1em;
   padding: 0em 1em;
 }
 
 .primary-nav li:not(:last-child) {
-  border-right: 1px solid #ddd;
+  //adding visual seperator for nav links
+  border-right: 1px solid $light-gray;
 }

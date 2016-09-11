@@ -5,10 +5,12 @@
 
 // 2. Vendors
 @import
-  'vendor/css-reset'; //todo, use normalize instead
+  'vendor/css-reset'; //todo, use normalize instead?
+  //'vendor/normalize';
 
 // 3. Base styles
 @import
+  'base/variables',
   'base/base',
   'base/typography';
 

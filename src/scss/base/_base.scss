@@ -1,6 +1,6 @@
 body {
-  background-color: #f9f8fa;
-  font-family: Open Sans;
+  background-color: $content-bg;
+  font-family: $default-font;
   min-height: 100%;
   margin: 0 0 5em 0; /*bottom margin for footer nav*/
   counter-reset: candidate-number;
@@ -12,7 +12,6 @@ body {
   max-width: 30em;
   display: flex;
   flex-direction: column;
-  //flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }
