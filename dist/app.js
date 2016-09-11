@@ -21556,12 +21556,12 @@
 	          { className: 'page-content' },
 	          _react2.default.createElement(
 	            'p',
-	            { className: 'joe' },
+	            { className: 'joe message' },
 	            'Hi there! I\'m Joe, and I\'m a UX Designer.'
 	          ),
 	          _react2.default.createElement(
 	            'p',
-	            { className: 'joe' },
+	            { className: 'joe message' },
 	            'What would you like to see?'
 	          ),
 	          _react2.default.createElement(
@@ -21571,17 +21571,17 @@
 	          ),
 	          _react2.default.createElement(
 	            'p',
-	            { className: 'user candidate' },
+	            { className: 'user message candidate' },
 	            'Tell me a bit about yourself.'
 	          ),
 	          _react2.default.createElement(
 	            'p',
-	            { className: 'user candidate' },
+	            { className: 'user message candidate' },
 	            'I\'m looking for your resume.'
 	          ),
 	          _react2.default.createElement(
 	            'p',
-	            { className: 'user candidate' },
+	            { className: 'user message candidate' },
 	            'What\'s a UX Designer?'
 	          )
 	        )

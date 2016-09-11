@@ -1,4 +1,4 @@
-.joe, .user {
+.message {
   /*common styling for all chat messages*/
   margin-bottom: .8em;
   padding: .6em 1em;
@@ -6,7 +6,7 @@
   font-size: 14px;
 }
 
-.joe::before {
+.joe.message::before {
   /*JS icon for system chat messages*/
   position: relative;
   display: inline-block;
@@ -26,12 +26,12 @@
   margin-bottom: -1em;
 }
 
-.joe ~ .joe::before {
+.joe.message ~ .joe.message::before {
   /*hide the JS icon for all messages after the first*/
   display: none;
 }
 
-.joe {
+.joe.message {
   /*styling for system chat messages*/
   align-self: flex-start;
   background-color: #ECEBED;//#C4DDE2;
@@ -40,23 +40,16 @@
   /*box-shadow: 0px 2px 0px #ddd;*/
 }
 
-.user {
-  /* styling for chat messages (and candidate mssages) from the user*/
-  align-self: flex-end;
-  text-align: right;
-  background-color: #6799bb;
-  /*box-shadow: 0px 2px 1px #ddd;*/
-  color: #f9f8fa;
-}
-
 .user.message {
   /* styling for delivered chat messages from the user*/
+  align-self: flex-end;
+  text-align: right;
   background-color: #5BB598;
   border: .1em solid #5BB598;
   color: #fff;
 }
 
-.user.candidate{
+.user.message.candidate{
   /* styling for potential candidate chat messages from the user*/
   align-self: flex-end;
   text-align: right;
@@ -70,7 +63,7 @@
   padding: .5em .8em;
 }
 
-.user.candidate:hover{
+.user.message.candidate:hover{
   cursor: default;
   background-color: #C6F7E7;
   -webkit-transition: background-color 200ms, border 200ms, box-shadow 50ms, padding 100ms, margin 100ms; /* Safari */
@@ -82,7 +75,7 @@
   margin-right: -.2em;
 }
 
-.user.candidate:after {
+.user.message.candidate:after {
   /* this is hint text for number key shortcut */
   position: relative;
   display: inline-block;

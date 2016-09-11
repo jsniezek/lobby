@@ -40,13 +40,13 @@ class App extends React.Component {
           </ul>
         </nav>
         <div className="page-content">
-          <p className="joe">{'Hi there! I\u0027m Joe, and I\u0027m a UX Designer.'}</p>
-          <p className="joe">{'What would you like to see?'}</p>
+          <p className="joe message">{'Hi there! I\u0027m Joe, and I\u0027m a UX Designer.'}</p>
+          <p className="joe message">{'What would you like to see?'}</p>
           <p className="user message">{'Oh, hi Joe.'}</p>
-          <p className="user candidate">{'Tell me a bit about yourself.'}</p>
-          {/* <p className="user candidate">{'Show me some work you&#x27;ve done.'}</p>*/}
-          <p className="user candidate">{'I\u0027m looking for your resume.'}</p>
-          <p className="user candidate">{'What\u0027s a UX Designer?'}</p>
+          <p className="user message candidate">{'Tell me a bit about yourself.'}</p>
+          {/* <p className="user message candidate">{'Show me some work you&#x27;ve done.'}</p>*/}
+          <p className="user message candidate">{'I\u0027m looking for your resume.'}</p>
+          <p className="user message candidate">{'What\u0027s a UX Designer?'}</p>
           {/*<div style={{backgroundColor: this.state.color}} >
             <Slider ref="red" color="red" txt={this.state.red} update={this.update} />
             <Slider ref="green" color="green" txt={this.state.green} update={this.update} />
