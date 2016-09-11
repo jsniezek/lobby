@@ -1,0 +1,22 @@
+body {
+  background-color: #f9f8fa;
+  font-family: Open Sans;
+  min-height: 100%;
+  margin: 0 0 5em 0; /*bottom margin for footer nav*/
+  counter-reset: candidate-number;
+}
+
+.page-content {
+  /*this is the main area of screen, everything besides navigation */
+  padding: 2em 20% 0 20%;
+  max-width: 30em;
+  display: flex;
+  flex-direction: column;
+  //flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*div, ul, h1, h2, li, nav {
+  border: 1px solid #666;
+}*/

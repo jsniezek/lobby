@@ -1,0 +1,27 @@
+@charset 'UTF-8';
+
+// 1. Configuration and helpers
+// -- none --
+
+// 2. Vendors
+@import
+  'vendor/css-reset'; //todo, use normalize instead
+
+// 3. Base styles
+@import
+  'base/base',
+  'base/typography';
+
+// 4. Layout-related sections
+@import
+  'layout/navigation';
+
+// 5. Components
+@import
+  'components/chat-messages';
+
+// 6. Page-specific styles
+// -- none --
+
+// 7. Themes
+// -- none --
