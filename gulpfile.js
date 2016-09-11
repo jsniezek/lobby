@@ -28,7 +28,7 @@ gulp.task('lint', function() {
 
 // Compile Our Sass
 gulp.task('sass', function() {
-    return gulp.src('scss/*.scss')
+    return gulp.src('src/scss/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('dist/css'));
 });
@@ -46,12 +46,12 @@ gulp.task('sass', function() {
 // // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('src/*.js', ['lint', 'build', 'webpack-dev-server']);
-    gulp.watch('scss/*.scss', ['sass']);
+    gulp.watch('src/scss/*.scss', ['sass']);
 });
 
 // // Default Task
 // gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
-gulp.task('default', ['webpack-build', 'webpack-dev-server', 'watch']);
+gulp.task('default', ['sass', 'webpack-build', 'webpack-dev-server', 'watch']);
 
 gulp.task('webpack-build', function (callback) {
     webpack(webpackConfig, function (err, stats) {

@@ -21467,7 +21467,12 @@
 
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-	    _this.state = { txt: ' ' };
+	    _this.state = {
+	      red: 128,
+	      green: 128,
+	      blue: 128,
+	      color: "rgb(128,128,128)"
+	    };
 	    _this.update = _this.update.bind(_this);
 	    return _this;
 	  }
@@ -21475,7 +21480,16 @@
 	  _createClass(App, [{
 	    key: 'update',
 	    value: function update(e) {
-	      this.setState({ txt: e.target.value });
+	      var redVal = _reactDom2.default.findDOMNode(this.refs.red.refs.slide).value;
+	      var greenVal = _reactDom2.default.findDOMNode(this.refs.green.refs.slide).value;
+	      var blueVal = _reactDom2.default.findDOMNode(this.refs.blue.refs.slide).value;
+
+	      this.setState({
+	        red: redVal,
+	        green: greenVal,
+	        blue: blueVal,
+	        color: this.updateColor()
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -21483,31 +21497,135 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
-	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
-	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
-	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update })
+	        _react2.default.createElement(
+	          'nav',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'page-title' },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'Joe Sniezek'
+	            ),
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              '◉'
+	            ),
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'User Experience Design'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'primary-nav' },
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                'a',
+	                { href: '#' },
+	                'Portfolio'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                'a',
+	                { href: '#' },
+	                'Resume'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                'a',
+	                { href: '#' },
+	                'About'
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'page-content' },
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'joe' },
+	            'Hi there! I\'m Joe, and I\'m a UX Designer.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'joe' },
+	            'What would you like to see?'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'user message' },
+	            'Oh, hi Joe.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'user candidate' },
+	            'Tell me a bit about yourself.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'user candidate' },
+	            'I\'m looking for your resume.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'user candidate' },
+	            'What\'s a UX Designer?'
+	          )
+	        )
 	      );
+	    }
+	  }, {
+	    key: 'updateColor',
+	    value: function updateColor() {
+	      return "rgb(" + this.state.red + "," + this.state.green + "," + this.state.blue + ")";
 	    }
 	  }]);
 
 	  return App;
 	}(_react2.default.Component);
 
-	var JoeWidget = function JoeWidget(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'h1',
-	      null,
-	      'Hi there ',
-	      props.txt
-	    ),
-	    _react2.default.createElement('input', { type: 'text',
-	      onChange: props.update })
-	  );
-	};
+	var Slider = function (_React$Component2) {
+	  _inherits(Slider, _React$Component2);
+
+	  function Slider() {
+	    _classCallCheck(this, Slider);
+
+	    return _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).apply(this, arguments));
+	  }
+
+	  _createClass(Slider, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          this.props.color,
+	          ' ',
+	          this.props.txt
+	        ),
+	        _react2.default.createElement('input', { ref: 'slide', type: 'range', min: '0', max: '255', onChange: this.props.update })
+	      );
+	    }
+	  }]);
+
+	  return Slider;
+	}(_react2.default.Component);
 
 	_reactDom2.default.render(_react2.default.createElement(App, { txt: '' }), document.getElementById('app'));
 
