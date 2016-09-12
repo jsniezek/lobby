@@ -1,7 +1,18 @@
 // 1. Colors
+$black: hsl(0, 0%, 0%);
+$dark-gray: hsl(0, 0%, 20%);
+$white: hsl(0, 100%, 100%);
+$light-gray: hsl(0, 0%, 80%);
+$lighter-gray: lighten($light-gray, 7%);
+$lightest-gray: lighten($light-gray, 13%);
+$dark-green: hsl(160, 38%, 53%);
+$green-highlight: hsl(160, 75%, 87%);
+$green-highlight-border: darken(desaturate( $green-highlight, 30% ), 10%);
+$chat-icon-bg: hsl(0, 0%, 43%);
+$sys-msg-bg: hsl(270, 5%, 93%);
+$sys-msg-border: darken(desaturate( $sys-msg-bg, 2% ), 4%);
 $content-bg: #f9f8fa;
-$nav-bg: #fff;
-$light-gray: #ddd;
+$nav-bg: $white;
 
 // 2. Fonts
 $default-font: 'Open Sans';

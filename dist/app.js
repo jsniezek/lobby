@@ -21566,7 +21566,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'p',
-	            { className: 'user message' },
+	            { className: 'user message posted' },
 	            'Oh, hi Joe.'
 	          ),
 	          _react2.default.createElement(

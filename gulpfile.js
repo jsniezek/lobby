@@ -4,6 +4,7 @@ var gutil = require('gulp-util');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
 var WebpackDevServer = require('webpack-dev-server');
+var livereload = require('gulp-livereload');
 
 // Include Our Plugins
 var jshint = require('gulp-jshint');
@@ -30,7 +31,8 @@ gulp.task('lint', function() {
 gulp.task('sass', function() {
     return gulp.src('src/scss/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('dist/css'));
+        .pipe(gulp.dest('dist/css'))
+        .pipe(livereload());
 });
 
 // Concatenate & Minify JS
@@ -45,13 +47,14 @@ gulp.task('sass', function() {
 
 // // Watch Files For Changes
 gulp.task('watch', function() {
+    livereload.listen();
     gulp.watch('src/*.js', ['lint', 'build', 'webpack-dev-server']);
-    gulp.watch('src/scss/*.scss', ['sass']);
+    gulp.watch('src/scss/**/*.scss', ['sass']);
 });
 
 // // Default Task
 // gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
-gulp.task('default', ['sass', 'webpack-build', 'webpack-dev-server', 'watch']);
+gulp.task('default', ['webpack-build', 'webpack-dev-server', 'sass', 'watch']);
 
 gulp.task('webpack-build', function (callback) {
     webpack(webpackConfig, function (err, stats) {
