@@ -1,17 +1,23 @@
-// 1. Colors
+// 1.a Colors
+$white: hsl(0, 100%, 100%);
 $black: hsl(0, 0%, 0%);
 $dark-gray: hsl(0, 0%, 20%);
-$white: hsl(0, 100%, 100%);
-$light-gray: hsl(0, 0%, 80%);
+$med-gray: lighten($dark-gray, 23%);
+$light-gray: lighten($dark-gray, 60%);
 $lighter-gray: lighten($light-gray, 7%);
 $lightest-gray: lighten($light-gray, 13%);
-$dark-green: hsl(160, 38%, 53%);
-$green-highlight: hsl(160, 75%, 87%);
-$green-highlight-border: darken(desaturate( $green-highlight, 30% ), 10%);
-$chat-icon-bg: hsl(0, 0%, 43%);
-$sys-msg-bg: hsl(270, 5%, 93%);
+$forester-green: hsl(160, 38%, 53%);
+$main-color: $forester-green;
+$complement-color: adjust-hue($main-color, 110);
+
+// 1.b Color Mappings
+$user-chat-bg: $forester-green;
+$user-chat-highlight: lighten(saturate($user-chat-bg, 37%), 34%);
+$user-chat-highlight-border: darken(desaturate($user-chat-highlight, 30% ), 10%);
+$chat-icon-bg: $med-gray;
+$sys-msg-bg: lighten(desaturate($complement-color, 33%), 40%);
 $sys-msg-border: darken(desaturate( $sys-msg-bg, 2% ), 4%);
-$content-bg: #f9f8fa;
+$content-area-bg: #f9f8fa;
 $nav-bg: $white;
 
 // 2. Fonts
