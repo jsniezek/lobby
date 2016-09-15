@@ -44,14 +44,9 @@ class App extends React.Component {
           <p className="joe message">{'What would you like to see?'}</p>
           <p className="user message posted">{'Oh, hi Joe.'}</p>
           <p className="user message candidate">{'Tell me a bit about yourself.'}</p>
-          {/* <p className="user message candidate">{'Show me some work you&#x27;ve done.'}</p>*/}
+          {/* <p className="user message candidate">{'Show me some work you\u0027ve done.'}</p>*/}
           <p className="user message candidate">{'I\u0027m looking for your resume.'}</p>
           <p className="user message candidate">{'What\u0027s a UX Designer?'}</p>
-          {/*<div style={{backgroundColor: this.state.color}} >
-            <Slider ref="red" color="red" txt={this.state.red} update={this.update} />
-            <Slider ref="green" color="green" txt={this.state.green} update={this.update} />
-            <Slider ref="blue" color="blue" txt={this.state.blue} update={this.update} />
-          </div>*/}
         </div>
       </div>
     )

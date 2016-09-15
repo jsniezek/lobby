@@ -4,7 +4,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
   height: 4em;
   padding: .5em 0;
   background-color: $nav-bg;
@@ -16,37 +16,73 @@ nav {
 
 .page-title {
   /*this is the logo / title for the page*/
+  //align-self:center;
   display: flex;
   flex-grow: 1;
+  align-items: center;
   justify-content: center;
-  //padding: 2em 0;
-}
 
-.page-title h1, h2 {
-  padding: 0em .4em;
-  letter-spacing: .1em;
+  h1, h2 {
+    padding: 0em .4em;
+    letter-spacing: .1em;
+  }
 }
 
 .primary-nav {
+  //actual page navigation elements
+  align-items: stretch;
   display: flex;
   list-style: none;
   padding-right: 2em;
   flex-grow: 1;
   justify-content: center;
-  //background-color: #bff;
   padding: 0em 1em;
-}
 
-.primary-nav a {
-  text-decoration: none;
-  color: #000;
-  /*color: #551A8B;*/
-  /*color: #607770;*/
-  font-size: 1em;
-  padding: 0em 1em;
-}
+  li {
+    display: flex;
 
-.primary-nav li:not(:last-child) {
-  //adding visual seperator for nav links
-  border-right: 1px solid $light-gray;
+    &:hover {
+      a {
+        color: $black;
+        background-color: $lighter-gray; //hsl(60, 100%, 70%);
+        border-radius: .2em;
+        -webkit-transition: background-color 200ms, color 250ms; /* Safari */
+        transition: background-color 200ms, color 250ms;
+      }
+
+      & + li::after {
+        background-color: $nav-bg;
+        -webkit-transition: background-color 200ms, color 250ms; /* Safari */
+        transition: background-color 200ms, color 250ms;
+      }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $some-purple;
+    font-size: 1em;
+    padding: 0em 1em;
+
+    -webkit-transition: background-color 300ms, color 350ms; /* Safari */
+    transition: background-color 300ms, color 250ms;
+    }
+  }
+
+  //previous:has(+ next)
+
+  li:not(:first-child)::after {
+    position: absolute;
+    align-self: center;
+    display: inline;
+    content: " ";
+    width: 1px;
+    height: 1em;
+    border-radius: .2em;
+    background-color: $lighter-gray;
+
+    -webkit-transition: background-color 300ms, color 250ms; /* Safari */
+    transition: background-color 300ms, color 250ms;
+  }
 }

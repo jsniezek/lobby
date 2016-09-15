@@ -8,15 +8,15 @@ $lighter-gray: lighten($black, 87%);
 $lightest-gray: lighten($black, 93%);
 $off-white: darken($white, 2%);
 $forester-green: hsl(160, 47%, 50%);
+$some-purple: #551A8B;
 
 // 1.b Color Mappings
 $nav-bg: $white;
-$main-color: $forester-green;
+$content-area-bg: $off-white;
 $user-chat-bg: $forester-green;
 $user-chat-highlight: lighten(saturate($user-chat-bg, 37%), 34%);
 $user-chat-highlight-border: darken(desaturate($user-chat-highlight, 30% ), 10%);
 $chat-icon-bg: $med-gray;
-$content-area-bg: $off-white;
 $sys-msg-bg: $lightest-gray;
 $sys-msg-border: $lighter-gray;
 
