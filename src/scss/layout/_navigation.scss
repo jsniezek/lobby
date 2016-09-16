@@ -2,13 +2,15 @@ nav {
   /*note: primary navigation appears on the bottom of page*/
   z-index: 1;
   display: flex;
+  flex: 0 0 auto;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
   height: 4em;
+  margin-top: -4em;
   padding: .5em 0;
   background-color: $nav-bg;
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -46,14 +48,14 @@ nav {
         color: $black;
         background-color: $lighter-gray; //hsl(60, 100%, 70%);
         border-radius: .2em;
-        -webkit-transition: background-color 200ms, color 250ms; /* Safari */
-        transition: background-color 200ms, color 250ms;
+        -webkit-transition: background-color 300ms, color 250ms; /* Safari */
+        transition: background-color 300ms, color 250ms;
       }
 
       & + li::after {
         background-color: $nav-bg;
-        -webkit-transition: background-color 200ms, color 250ms; /* Safari */
-        transition: background-color 200ms, color 250ms;
+        -webkit-transition: background-color 300ms, color 250ms; /* Safari */
+        transition: background-color 300ms, color 250ms;
       }
   }
 
@@ -65,8 +67,8 @@ nav {
     font-size: 1em;
     padding: 0em 1em;
 
-    -webkit-transition: background-color 300ms, color 350ms; /* Safari */
-    transition: background-color 300ms, color 250ms;
+    -webkit-transition: background-color 200ms, color 350ms; /* Safari */
+    transition: background-color 200ms, color 250ms;
     }
   }
 
@@ -82,7 +84,7 @@ nav {
     border-radius: .2em;
     background-color: $lighter-gray;
 
-    -webkit-transition: background-color 300ms, color 250ms; /* Safari */
-    transition: background-color 300ms, color 250ms;
+    -webkit-transition: background-color 200ms, color 250ms; /* Safari */
+    transition: background-color 200ms, color 250ms;
   }
 }

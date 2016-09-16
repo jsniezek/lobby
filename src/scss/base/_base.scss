@@ -1,19 +1,29 @@
 body {
   background-color: $content-area-bg;
   font-family: $default-font;
-  min-height: 100%;
-  margin: 0 0 5em 0; /*bottom margin for footer nav*/
+  margin-bottom: 5em; /*bottom margin is for fixed footer nav*/
   counter-reset: candidate-number;
+  overflow: hidden;
+}
+
+.box {
+  /*this is a container flexbox for content and navigation*/
+  display: flex;
+  flex-direction: column;
+  height: 100vh; //necessary for scrollable content area
 }
 
 .page-content {
-  /*this is the main area of screen, everything besides navigation */
+  /*this is the main area of screen, everything other than navigation */
   padding: 2em 20% 0 20%;
-  max-width: 30em;
+  //max-width: 30em;
+  //justify-content: space-around;
   display: flex;
+  overflow-y: auto;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  margin-bottom: 5em;
+
 }
 
 // div, ul, h1, h2, li, nav, a {
