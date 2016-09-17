@@ -45,9 +45,9 @@ nav {
 
     &:hover {
       a {
-        color: $black;
+        color: darken($color4, 10%);
         background-color: $lighter-gray; //hsl(60, 100%, 70%);
-        border-radius: .2em;
+        border-radius: .1em;
         -webkit-transition: background-color 300ms, color 250ms; /* Safari */
         transition: background-color 300ms, color 250ms;
       }
@@ -63,7 +63,7 @@ nav {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: $some-purple;
+    color: $black;
     font-size: 1em;
     padding: 0em 1em;
 

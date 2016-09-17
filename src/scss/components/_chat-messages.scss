@@ -74,8 +74,8 @@
     text-align: center;
     line-height: 3em;
     color: $white;
-    background-color: $chat-icon-bg;
-    border: .1em solid $chat-icon-bg;
+    background-color: $user-chat-icon-bg;
+    border: .1em solid $user-chat-icon-bg;
     border-radius: 50%;
     font-size: 12px;
     margin-right: -3.2em;
@@ -84,16 +84,17 @@
   }
 
   ~ .user.message::before {
+    &not(.candidate) {
     /* hide the little triangle part of the chat message shape for all messages after the first*/
     display: none;
+    }
   }
 
   ~ .user.message::after {
-      &not(.candidate) {
+      //&not(.candidate) {
       /* hide the user icon for all messages after the first*/
       /* note: candidate message has it's own 'after' element*/
       display: none;
-    }
   }
 }
 
@@ -107,40 +108,40 @@
   transition: background-color 250ms, border 200ms, box-shadow 100ms, padding 100ms, margin 100ms;
   color: $black;
   box-shadow: none;
-  border: .2em solid $lighter-gray;
-  padding: .5em .8em;
+  border: .1em dotted $med-gray;
+  padding: .6em .8em;
 
   &:hover {
     cursor: default;
     background-color: $user-chat-highlight;
     -webkit-transition: background-color 200ms, border 200ms, box-shadow 50ms, padding 100ms, margin 100ms; /* Safari */
     transition: background-color 200ms, border 200ms, box-shadow 50ms, padding 100ms, margin 100ms;
-    border: .2em solid $user-chat-highlight-border;
+    border: .1em solid $user-chat-highlight-border;
     box-shadow: 0px 2px 1px $lighter-gray;
     color: $dark-gray;
-    padding: .5em 1em;
+    padding: .6em 1em;
     margin-right: -.2em;
   }
 
-  &::after {
+  &::before {
     /* this is hint text for number key shortcut */
     position: relative;
     display: inline-block;
-    width: 2em;
-    right: -1.8em;
-    height: 2em;
-    //top: -.5em;
+    width: 1.7em;
+    float: left;
+    height: 1.7em;
     content: counter(candidate-number);
     text-align: center;
-    line-height: 2em;
-    color: $light-gray;
-    background-color: $white;
-    border-radius: 2%;
-    font-size: 14px;
+    line-height: 1.7em;
+    color: hsla(0, 0%, 40%, .3);//$light-gray;
+    background-color: hsla(0, 50%, 100%, .7);
+    border-radius: 50%;
+    font-size: 13px;
     font-weight: 600;
-    margin-right: -2em;
-    margin-top: -1em;
+    left: -0.4em;
+    margin-right: 0.2em;
+    margin-top: -.3em;
     margin-bottom: -1em;
-    border: .1em solid $lightest-gray;
+    border: none;
   }
 }

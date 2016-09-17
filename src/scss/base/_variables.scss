@@ -10,15 +10,23 @@ $off-white: darken($white, 2%);
 $forester-green: hsl(160, 47%, 50%);
 $some-purple: #551A8B;
 
+// Colors I'm playing with
+$color1: hsla(145, 55%, 57%, 1);
+$color2: hsla(0, 0%, 18%, 1);
+$color3: hsla(0, 0%, 95%, 1);
+$color4: hsla(200, 35%, 26%, 1);
+$color5: hsla(195, 28%, 78%, 1);
+
 // 1.b Color Mappings
 $nav-bg: $white;
 $content-area-bg: $off-white;
 $user-chat-bg: $forester-green;
 $user-chat-highlight: lighten(saturate($user-chat-bg, 37%), 34%);
 $user-chat-highlight-border: darken(desaturate($user-chat-highlight, 30% ), 10%);
-$chat-icon-bg: $med-gray;
-$sys-msg-bg: $lightest-gray;
-$sys-msg-border: $lighter-gray;
+$chat-icon-bg: $color4;
+$user-chat-icon-bg: darken($forester-green, 25%);
+$sys-msg-bg: lighten($color5, 15%);//$lightest-gray;
+$sys-msg-border: darken($color5, 10%);//$light-gray;
 
 // 2. Fonts
 $default-font: 'Open Sans';
