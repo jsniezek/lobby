@@ -17,40 +17,33 @@ body {
 
 .content-area {
   /*this is the main area of screen, everything other than navigation */
-  justify-content: flex-end;
-  align-items: stretch;
+  justify-content: center;
+  //align-items: flex-end;
   display: flex;
   overflow-y: auto;
   flex-direction: row;
   margin-bottom: 5em;
-  background-color: $chat-area-bg;
-  height: 100vh;
-  //flex-basis: fill;
-}
-
-.sidebar {
   background-color: $content-area-bg;
-  flex: 1 1 auto;
-  height: 100%;
+  height: 100vh; //necessary to have inner content take full available height 
 }
 
 .chat-area {
   /*this is the main area of screen, everything other than navigation */
   padding: 2em 4em 0 4em;
-  max-width: 25em;
+  max-width: 30em;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  //flex-basis: content;
-  justify-content: flex-end;
+  min-height: min-content;
   background-color: $chat-area-bg;
-  //TODO: fix scrolling with justify flex end...
-  //justify-content: flex-end;
+  //TODO: fix scrolling with align flex end...
 }
 
 .chat-spacer {
-  /* keeps chat content at  top of screen when there's not much content*/
+  /* experimental */
+  /* keeps chat content at top of screen when there's not much content*/
   flex-grow: 2;
+  //background-color: pink;
 }
 
 @media all and (min-width: 26em) {

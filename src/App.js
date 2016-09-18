@@ -28,7 +28,6 @@ class App extends React.Component {
     return (
       <div className="box">
         <div className="content-area">
-          <div className="sidebar"></div>
           <div className="chat-area">
             <p className="joe message">{'Hi there! I\u0027m Joe, and I\u0027m a UX Designer.'}</p>
             <p className="joe message">{'What would you like to see?'}</p>
@@ -42,7 +41,6 @@ class App extends React.Component {
             <p className="joe message">{'This is another message'}</p>
             <div className="chat-spacer"></div>
           </div>
-          <div className="sidebar"></div>
         </div>
         <nav>
           <div className="page-title">

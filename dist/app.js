@@ -21500,7 +21500,6 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'content-area' },
-	          _react2.default.createElement('div', { className: 'sidebar' }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'chat-area' },
@@ -21550,8 +21549,7 @@
 	              'This is another message'
 	            ),
 	            _react2.default.createElement('div', { className: 'chat-spacer' })
-	          ),
-	          _react2.default.createElement('div', { className: 'sidebar' })
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'nav',
