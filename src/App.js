@@ -27,14 +27,22 @@ class App extends React.Component {
   render(){
     return (
       <div className="box">
-        <div className="page-content">
-          <p className="joe message">{'Hi there! I\u0027m Joe, and I\u0027m a UX Designer.'}</p>
-          <p className="joe message">{'What would you like to see?'}</p>
-          <p className="user message posted">{'Oh, hi Joe.'}</p>
-          <p className="user message candidate">{'Tell me a bit about yourself.'}</p>
-          {/* <p className="user message candidate">{'Show me some work you\u0027ve done.'}</p>*/}
-          <p className="user message candidate">{'I\u0027m looking for your resume.'}</p>
-          <p className="user message candidate">{'What\u0027s a UX Designer?'}</p>
+        <div className="content-area">
+          <div className="sidebar"></div>
+          <div className="chat-area">
+            <p className="joe message">{'Hi there! I\u0027m Joe, and I\u0027m a UX Designer.'}</p>
+            <p className="joe message">{'What would you like to see?'}</p>
+            <p className="user message posted">{'Oh, hi Joe.'}</p>
+            <p className="user message candidate">{'Tell me a bit about yourself.'}</p>
+            {/* <p className="user message candidate">{'Show me some work you\u0027ve done.'}</p>*/}
+            <p className="user message candidate">{'I\u0027m looking for your resume.'}</p>
+            <p className="user message candidate">{'What\u0027s a UX Designer?'}</p>
+            <p className="joe message">{'This is another message'}</p>
+            <p className="joe message">{'This is another message'}</p>
+            <p className="joe message">{'This is another message'}</p>
+            <div className="chat-spacer"></div>
+          </div>
+          <div className="sidebar"></div>
         </div>
         <nav>
           <div className="page-title">

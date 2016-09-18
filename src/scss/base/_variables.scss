@@ -16,11 +16,15 @@ $color2: hsla(0, 0%, 18%, 1);
 $color3: hsla(0, 0%, 95%, 1);
 $color4: hsla(200, 35%, 26%, 1);
 $color5: hsla(195, 28%, 78%, 1);
+$color6: hsla(200, 70%, 40%, 1);
+
+$forester-green: $color6;
 
 // 1.b Color Mappings
 $nav-bg: $white;
-$content-area-bg: $off-white;
-$user-chat-bg: $forester-green;
+$content-area-bg: $lightest-gray;
+$chat-area-bg: $off-white;
+$user-chat-bg: $color6;
 $user-chat-highlight: lighten(saturate($user-chat-bg, 37%), 34%);
 $user-chat-highlight-border: darken(desaturate($user-chat-highlight, 30% ), 10%);
 $chat-icon-bg: $color4;

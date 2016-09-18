@@ -74,8 +74,8 @@
     text-align: center;
     line-height: 3em;
     color: $white;
-    background-color: $user-chat-icon-bg;
-    border: .1em solid $user-chat-icon-bg;
+    background-color: $chat-icon-bg;
+    border: .1em solid $chat-icon-bg;
     border-radius: 50%;
     font-size: 12px;
     margin-right: -3.2em;
@@ -108,7 +108,7 @@
   transition: background-color 250ms, border 200ms, box-shadow 100ms, padding 100ms, margin 100ms;
   color: $black;
   box-shadow: none;
-  border: .1em dotted $med-gray;
+  border: .1em dotted darken($color5, 10%);
   padding: .6em .8em;
 
   &:hover {
@@ -133,8 +133,8 @@
     content: counter(candidate-number);
     text-align: center;
     line-height: 1.7em;
-    color: hsla(0, 0%, 40%, .3);//$light-gray;
-    background-color: hsla(0, 50%, 100%, .7);
+    color: hsla(200, 100%, 40%, .4);//$light-gray;
+    background-color: hsla(0, 50%, 100%, .4);
     border-radius: 50%;
     font-size: 13px;
     font-weight: 600;

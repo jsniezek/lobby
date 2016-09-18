@@ -4,26 +4,57 @@ body {
   margin-bottom: 5em; /*bottom margin is for fixed footer nav*/
   counter-reset: candidate-number;
   overflow: hidden;
+  justify-content: flex-end;
 }
 
 .box {
   /*this is a container flexbox for content and navigation*/
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   height: 100vh; //necessary for scrollable content area
 }
 
-.page-content {
+.content-area {
   /*this is the main area of screen, everything other than navigation */
-  padding: 2em 20% 0 20%;
-  //max-width: 30em;
-  //justify-content: space-around;
+  justify-content: flex-end;
+  align-items: stretch;
   display: flex;
   overflow-y: auto;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   margin-bottom: 5em;
+  background-color: $chat-area-bg;
+  height: 100vh;
+  //flex-basis: fill;
+}
 
+.sidebar {
+  background-color: $content-area-bg;
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.chat-area {
+  /*this is the main area of screen, everything other than navigation */
+  padding: 2em 4em 0 4em;
+  max-width: 25em;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  //flex-basis: content;
+  justify-content: flex-end;
+  background-color: $chat-area-bg;
+  //TODO: fix scrolling with justify flex end...
+  //justify-content: flex-end;
+}
+
+.chat-spacer {
+  /* keeps chat content at  top of screen when there's not much content*/
+  flex-grow: 2;
+}
+
+@media all and (min-width: 26em) {
+  /* placeholder */
 }
 
 // div, ul, h1, h2, li, nav, a {
