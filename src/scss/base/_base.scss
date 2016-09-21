@@ -24,11 +24,11 @@ body {
   flex-direction: row;
   margin-bottom: 5em;
   background-color: $content-area-bg;
-  height: 100vh; //necessary to have inner content take full available height 
+  height: 100vh; //necessary to have inner content take full available height
 }
 
 .chat-area {
-  /*this is the main area of screen, everything other than navigation */
+  /*this is the area for chat messages */
   padding: 2em 4em 0 4em;
   max-width: 30em;
   display: flex;

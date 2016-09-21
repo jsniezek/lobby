@@ -26,6 +26,8 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "jshint": "^2.9.3",
+    "react-addons-css-transition-group": "^15.3.1",
+    "react-addons-transition-group": "^15.3.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1",
     "webpack-stream": "^3.2.0"
