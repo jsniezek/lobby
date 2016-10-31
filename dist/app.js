@@ -21441,6 +21441,8 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -21459,34 +21461,92 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var App = function (_React$Component) {
-	  _inherits(App, _React$Component);
+	var Mixer = function Mixer(InnerComponent) {
+	  return function (_React$Component) {
+	    _inherits(_class, _React$Component);
+
+	    function _class() {
+	      _classCallCheck(this, _class);
+
+	      var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this));
+
+	      _this.update = _this.update.bind(_this);
+	      _this.state = { val: 0 };
+	      return _this;
+	    }
+
+	    _createClass(_class, [{
+	      key: 'update',
+	      value: function update() {
+	        this.setState({ val: this.state.val + 1 });
+	      }
+	    }, {
+	      key: 'componentWillMount',
+	      value: function componentWillMount() {
+	        console.log('mounting');
+	      }
+	    }, {
+	      key: 'componentDidMount',
+	      value: function componentDidMount() {
+	        console.log('mounting');
+	        // console.log(ReactDOM.findDOMNode(this));
+	        // this.inc = setInterval(this.update,500);
+	      }
+	    }, {
+	      key: 'render',
+	      value: function render() {
+	        return _react2.default.createElement(InnerComponent, _extends({
+	          update: this.update
+	        }, this.state, this.props));
+	      }
+	    }]);
+
+	    return _class;
+	  }(_react2.default.Component);
+	};
+
+	var Button = function Button(props) {
+	  return _react2.default.createElement(
+	    'button',
+	    {
+	      onClick: props.update },
+	    props.txt,
+	    ' - ',
+	    props.val
+	  );
+	};
+
+	var Label = function Label(props) {
+	  return _react2.default.createElement(
+	    'label',
+	    {
+	      onMouseMove: props.update },
+	    props.txt,
+	    ' - ',
+	    props.val
+	  );
+	};
+
+	var ButtonMixed = Mixer(Button);
+	var LabelMixed = Mixer(Label);
+
+	var App = function (_React$Component2) {
+	  _inherits(App, _React$Component2);
 
 	  function App() {
 	    _classCallCheck(this, App);
 
-	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-	    _this.state = { txt: ' ' };
-	    _this.update = _this.update.bind(_this);
-	    return _this;
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
 	  }
 
 	  _createClass(App, [{
-	    key: 'update',
-	    value: function update(e) {
-	      this.setState({ txt: e.target.value });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
-	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
-	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update }),
-	        _react2.default.createElement(JoeWidget, { txt: this.state.txt, update: this.update })
+	        _react2.default.createElement(ButtonMixed, { txt: 'Button' }),
+	        _react2.default.createElement(LabelMixed, { txt: 'Label' })
 	      );
 	    }
 	  }]);
@@ -21494,24 +21554,10 @@
 	  return App;
 	}(_react2.default.Component);
 
-	var JoeWidget = function JoeWidget(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'h1',
-	      null,
-	      'Hi there ',
-	      props.txt
-	    ),
-	    _react2.default.createElement('input', { type: 'text',
-	      onChange: props.update })
-	  );
-	};
+	exports.default = App;
+
 
 	_reactDom2.default.render(_react2.default.createElement(App, { txt: '' }), document.getElementById('app'));
-
-	exports.default = App;
 
 /***/ }
 /******/ ]);

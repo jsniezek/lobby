@@ -1,56 +1,59 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-class App extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      red: 128,
-      green: 128,
-      blue: 128,
-      color: "rgb(128,128,128)"
-    };
-    this.update = this.update.bind(this);
-  }
-  update(e){
-    let redVal = ReactDOM.findDOMNode(this.refs.red.refs.slide).value;
-    let greenVal = ReactDOM.findDOMNode(this.refs.green.refs.slide).value;
-    let blueVal = ReactDOM.findDOMNode(this.refs.blue.refs.slide).value;
 
-    this.setState({
-      red: redVal,
-      green: greenVal,
-      blue: blueVal,
-      color: this.updateColor()
-    })
+let Mixer = InnerComponent => class extends React.Component {
+  constructor() {
+    super();
+    this.update = this.update.bind(this);
+    this.state = {val: 0};
   }
-  render(){
-    return (
-      <div style={{backgroundColor: this.state.color}} >
-        <Slider ref="red" color="red" txt={this.state.red} update={this.update} />
-        <Slider ref="green" color="green" txt={this.state.green} update={this.update} />
-        <Slider ref="blue" color="blue" txt={this.state.blue} update={this.update} />
-    </div>
-    )
+  update() {
+    this.setState({val: this.state.val + 1});
   }
-  updateColor() {
-    return "rgb("+this.state.red+","+this.state.green+","+this.state.blue+")";
+  componentWillMount() {
+    console.log('mounting');
+  }
+  componentDidMount() {
+    console.log('mounting');
+    // console.log(ReactDOM.findDOMNode(this));
+    // this.inc = setInterval(this.update,500);
+  }
+  render() {
+    return <InnerComponent
+      update={this.update}
+      {...this.state}
+      {...this.props} />
   }
 }
 
-class Slider extends React.Component {
+const Button = (props) => <button
+                            onClick={props.update}>
+                            {props.txt} - {props.val}
+                          </button>
+
+const Label = (props) => <label
+                            onMouseMove={props.update}>
+                            {props.txt} - {props.val}
+                          </label>
+
+let ButtonMixed = Mixer(Button)
+let LabelMixed = Mixer(Label)
+
+
+class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>{this.props.color} {this.props.txt}</h1>
-        <input ref="slide" type="range" min="0" max="255" onChange={this.props.update} />
-       </div>
-    );
+          <ButtonMixed txt="Button" />
+          <LabelMixed txt="Label" />
+      </div>
+    )
   }
 }
+
+export default App
 
 ReactDOM.render(
   <App txt=''/>,
    document.getElementById('app')
  );
-
-export default App
