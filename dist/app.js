@@ -21463,6 +21463,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var data = __webpack_require__(180);
+
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
 
@@ -21472,10 +21474,7 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 	    _this.state = {
-	      red: 128,
-	      green: 128,
-	      blue: 128,
-	      color: "rgb(128,128,128)",
+	      step: 1,
 	      joeIntro: ["Hi there! I'm Joe, and I'm a UX Designer Robot.", 'What would you like to see?']
 	    };
 	    _this.update = _this.update.bind(_this);
@@ -21485,15 +21484,8 @@
 	  _createClass(App, [{
 	    key: 'update',
 	    value: function update(e) {
-	      var redVal = _reactDom2.default.findDOMNode(this.refs.red.refs.slide).value;
-	      var greenVal = _reactDom2.default.findDOMNode(this.refs.green.refs.slide).value;
-	      var blueVal = _reactDom2.default.findDOMNode(this.refs.blue.refs.slide).value;
-
 	      this.setState({
-	        red: redVal,
-	        green: greenVal,
-	        blue: blueVal,
-	        color: this.updateColor()
+	        step: 1
 	      });
 	    }
 	  }, {
@@ -21505,38 +21497,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'content-area' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'chat-area' },
-	            _react2.default.createElement(JoeMessage, { txt: 'Hi there! I\'m Joe, and I\'m a UX Designer Robot.' }),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'joe message' },
-	              'What would you like to see?'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'user message posted' },
-	              'Oh, hi Joe.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'user message candidate' },
-	              'Tell me a bit about yourself.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'user message candidate' },
-	              'I\'m looking for your resume.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'user message candidate' },
-	              'What\'s a UX Designer?'
-	            ),
-	            _react2.default.createElement(TodoList, null),
-	            _react2.default.createElement('div', { className: 'chat-spacer' })
-	          )
+	          _react2.default.createElement(Snippet, { content: data["Start"] })
 	        ),
 	        _react2.default.createElement(
 	          'nav',
@@ -21594,15 +21555,43 @@
 	        )
 	      );
 	    }
-	  }, {
-	    key: 'updateColor',
-	    value: function updateColor() {
-	      return "rgb(" + this.state.red + "," + this.state.green + "," + this.state.blue + ")";
-	    }
 	  }]);
 
 	  return App;
 	}(_react2.default.Component);
+
+	function Snippet(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'chat-area' },
+	    props.content.txt.length > 0 && _react2.default.createElement(
+	      'p',
+	      { className: 'user message posted' },
+	      props.content.txt
+	    ),
+	    props.content.response.split("\n").map(function (sentence) {
+	      return _react2.default.createElement(
+	        'p',
+	        { className: 'joe message', key: sentence.toString() },
+	        sentence
+	      );
+	    }),
+	    props.content.say.length > 0 && _react2.default.createElement(
+	      'p',
+	      { className: 'user message posted' },
+	      props.content.say
+	    ),
+	    props.content.choices.map(function (candidate) {
+	      return _react2.default.createElement(
+	        'p',
+	        { className: 'user message candidate', key: candidate.toString() },
+	        data[candidate].txt
+	      );
+	    })
+	  );
+	}
+
+	//experimental
 
 	var JoeMessage = function (_React$Component2) {
 	  _inherits(JoeMessage, _React$Component2);
@@ -21627,75 +21616,22 @@
 	  return JoeMessage;
 	}(_react2.default.Component);
 
-	var Slider = function (_React$Component3) {
-	  _inherits(Slider, _React$Component3);
-
-	  function Slider() {
-	    _classCallCheck(this, Slider);
-
-	    return _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).apply(this, arguments));
-	  }
-
-	  _createClass(Slider, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          this.props.color,
-	          ' ',
-	          this.props.txt
-	        ),
-	        _react2.default.createElement('input', { ref: 'slide', type: 'range', min: '0', max: '255', onChange: this.props.update })
-	      );
-	    }
-	  }]);
-
-	  return Slider;
-	}(_react2.default.Component);
-
-	var TodoList = _react2.default.createClass({
-	  displayName: 'TodoList',
+	var UserMessage = _react2.default.createClass({
+	  displayName: 'UserMessage',
 
 	  getInitialState: function getInitialState() {
-	    return { items: ['hello', 'world', 'click', 'me'] };
+	    return {
+	      txt: 'Oh, hi Joe.', classes: 'user message candidate'
+	    };
 	  },
-	  handleAdd: function handleAdd() {
-	    var newItems = this.state.items.concat([prompt('Enter some text')]);
-	    this.setState({ items: newItems });
-	  },
-	  handleRemove: function handleRemove(i) {
-	    var newItems = this.state.items.slice();
-	    newItems.splice(i, 1);
-	    this.setState({ items: newItems });
+	  handleSelect: function handleSelect() {
+	    this.setState({ classes: "user message" });
 	  },
 	  render: function render() {
-	    var items = this.state.items.map(function (item, i) {
-	      return _react2.default.createElement(
-	        'div',
-	        { key: item, onClick: this.handleRemove.bind(this, i) },
-	        item
-	      );
-	    }.bind(this));
 	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: this.handleAdd },
-	        'Add Item'
-	      ),
-	      _react2.default.createElement(
-	        _reactAddonsCssTransitionGroup2.default,
-	        {
-	          transitionName: 'example',
-	          transitionEnterTimeout: 500,
-	          transitionLeaveTimeout: 300 },
-	        items
-	      )
+	      'p',
+	      { className: this.state.classes, onClick: this.handleSelect },
+	      this.state.txt
 	    );
 	  }
 	});
@@ -22539,6 +22475,48 @@
 	};
 
 	module.exports = ReactTransitionEvents;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"Start": {
+			"txt": "",
+			"response": "Hi, I'm Joe, and I'm a UX Designer.\nWhat would you like to see?",
+			"say": "Hi Joe.",
+			"choices": [
+				"About",
+				"Resume",
+				"Define UX"
+			]
+		},
+		"About": {
+			"txt": "Tell me a bit about yourself.",
+			"response": "Sure. I currently work in the User Experience Design team at Red Hat, where I'm responsible for the UX of a product called 'BPM Suite'.",
+			"choices": [
+				"BPM Suite",
+				"Red Hat",
+				"Hobbies"
+			]
+		},
+		"Resume": {
+			"txt": "I'd like to see your resume.",
+			"response": "Sure, here's my resume:",
+			"choices": [
+				"Done Resume"
+			]
+		},
+		"Define UX": {
+			"txt": "What's a UX Designer?",
+			"response": "Good question! UX stands for 'User Experience'. It is the art and science of making products and services more efficient, effective and pleasurable for the people using them.",
+			"choices": [
+				"How to do UX",
+				"UX Example",
+				"Credentials"
+			]
+		}
+	};
 
 /***/ }
 /******/ ]);

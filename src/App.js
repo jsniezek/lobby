@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+var data = require('json!./content.json');
 
 class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      red: 128,
-      green: 128,
-      blue: 128,
-      color: "rgb(128,128,128)",
+      step: 1,
       joeIntro: [
         "Hi there! I'm Joe, and I'm a UX Designer Robot.",
         'What would you like to see?'
@@ -18,33 +16,16 @@ class App extends React.Component {
     this.update = this.update.bind(this);
   }
   update(e){
-    let redVal = ReactDOM.findDOMNode(this.refs.red.refs.slide).value;
-    let greenVal = ReactDOM.findDOMNode(this.refs.green.refs.slide).value;
-    let blueVal = ReactDOM.findDOMNode(this.refs.blue.refs.slide).value;
-
     this.setState({
-      red: redVal,
-      green: greenVal,
-      blue: blueVal,
-      color: this.updateColor()
+      step: 1
     })
   }
+
   render(){
     return (
       <div className="box">
         <div className="content-area">
-          <div className="chat-area">
-            <JoeMessage txt="Hi there! I'm Joe, and I'm a UX Designer Robot."/>
-            {/* <p className="joe message">{'Hi there! I\u0027m Joe, and I\u0027m a UX Designer.'}</p>*/}
-            <p className="joe message">{'What would you like to see?'}</p>
-            <p className="user message posted">{'Oh, hi Joe.'}</p>
-            <p className="user message candidate">{'Tell me a bit about yourself.'}</p>
-            {/* <p className="user message candidate">{'Show me some work you\u0027ve done.'}</p>*/}
-            <p className="user message candidate">{'I\u0027m looking for your resume.'}</p>
-            <p className="user message candidate">{'What\u0027s a UX Designer?'}</p>
-            <TodoList />
-            <div className="chat-spacer"></div>
-          </div>
+          <Snippet content={data["Start"]}/>
         </div>
         <nav>
           <div className="page-title">
@@ -61,11 +42,32 @@ class App extends React.Component {
       </div>
     )
   }
-  updateColor() {
-    return "rgb("+this.state.red+","+this.state.green+","+this.state.blue+")";
-  }
 }
 
+function Snippet(props) {
+  return (
+    <div className="chat-area">
+      {props.content.txt.length > 0 &&
+        <p className="user message posted">
+          {props.content.txt}
+        </p>
+      }
+      {props.content.response.split("\n").map(function(sentence){
+        return <p className="joe message" key={sentence.toString()}>{sentence}</p>;
+      })}
+      {props.content.say.length > 0 &&
+        <p className="user message posted">
+          {props.content.say}
+        </p>
+      }
+      {props.content.choices.map(function(candidate){
+        return <p className="user message candidate" key={candidate.toString()}>{data[candidate].txt}</p>;
+      })}
+    </div>
+  )
+}
+
+//experimental
 class JoeMessage extends React.Component {
   render() {
     return (
@@ -76,50 +78,20 @@ class JoeMessage extends React.Component {
   }
 }
 
-class Slider extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.color} {this.props.txt}</h1>
-        <input ref="slide" type="range" min="0" max="255" onChange={this.props.update} />
-       </div>
-    );
-  }
-}
-
-
-var TodoList = React.createClass({
+var UserMessage = React.createClass({
   getInitialState: function() {
-    return {items: ['hello', 'world', 'click', 'me']};
+    return {
+      txt: 'Oh, hi Joe.', classes: 'user message candidate'
+    };
   },
-  handleAdd: function() {
-    var newItems =
-      this.state.items.concat([prompt('Enter some text')]);
-    this.setState({items: newItems});
-  },
-  handleRemove: function(i) {
-    var newItems = this.state.items.slice();
-    newItems.splice(i, 1);
-    this.setState({items: newItems});
+  handleSelect: function() {
+    this.setState({classes: "user message"});
   },
   render: function() {
-    var items = this.state.items.map(function(item, i) {
-      return (
-        <div key={item} onClick={this.handleRemove.bind(this, i)}>
-          {item}
-        </div>
-      );
-    }.bind(this));
     return (
-      <div>
-        <button onClick={this.handleAdd}>Add Item</button>
-        <ReactCSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
-          {items}
-        </ReactCSSTransitionGroup>
-      </div>
+      <p className={this.state.classes} onClick={this.handleSelect}>
+      {this.state.txt}
+      </p>
     );
   }
 });

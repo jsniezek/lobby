@@ -1,0 +1,30 @@
+{
+  "Start":
+    {
+      "txt": "",
+      "response": "Hi, I'm Joe, and I'm a UX Designer.\nWhat would you like to see?",
+      "say": "Hi Joe.",
+      "choices": ["About", "Resume", "Define UX"]
+    }
+  ,
+  "About":
+    {
+      "txt": "Tell me a bit about yourself.",
+      "response": "Sure. I currently work in the User Experience Design team at Red Hat, where I'm responsible for the UX of a product called 'BPM Suite'.",
+      "choices": ["BPM Suite", "Red Hat", "Hobbies"]
+    }
+  ,
+  "Resume":
+    {
+      "txt": "I'd like to see your resume.",
+      "response": "Sure, here's my resume:",
+      "choices": ["Done Resume"]
+    }
+  ,
+  "Define UX":
+    {
+      "txt": "What's a UX Designer?",
+      "response": "Good question! UX stands for 'User Experience'. It is the art and science of making products and services more efficient, effective and pleasurable for the people using them.",
+      "choices": ["How to do UX", "UX Example", "Credentials"]
+    }
+}
